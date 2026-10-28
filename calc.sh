@@ -8,11 +8,16 @@ math="exit 2"
 float=()
 f=0
 int=()
-i=0
+i=1
 
 if [ $# -lt 3 ]; then	
-	echo "exit 2"
-	
+	echo "not enough arguments"
+	exit 2
+fi
+
+if ! [ -x ./ops/"$1.sh" ]; then
+    echo "there is no such operation"
+    exit 2
 fi
 
 if [ -x ./ops/"$1.sh" ]; then
@@ -20,15 +25,16 @@ if [ -x ./ops/"$1.sh" ]; then
 	shift
 fi
 
-while [ -n "$1" ]; do
-    if [[ $1 = *.* ]] then
-        float[$f]=$1
-        ((f++))
-    elif  [[ $1 = * ]] then
-        int[$i]=$1
-        ((i++))
-	fi
-	shift
+while [ $i -le $# ]; do
+    if [[ ! ${!i} =~ ^-?[0-9]+(\.[0-9]+)?$ ]]; then
+	    echo "unsupported characters are present"
+        echo "supported"
+        echo " - 1 2 3 4 5 6 7 8 9 0 . "
+        exit 2
+    fi
+    ((i++))
 done
+
+"./ops/$math.sh" "$@"
 
 
