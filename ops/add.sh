@@ -8,5 +8,3 @@ for num in "$@"; do
 done
 
 echo $end
-
-
