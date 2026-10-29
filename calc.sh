@@ -4,16 +4,8 @@ set -u
 
 cd "$(dirname "$0")" || exit
 
-math="exit 2"
-float=()
-f=0
-int=()
+math=
 i=1
-
-if [ $# -lt 3 ]; then	
-	echo "not enough arguments"
-	exit 2
-fi
 
 if ! [ -x ./ops/"$1.sh" ]; then
     echo "there is no such operation"

@@ -1,5 +1,10 @@
 #!/bin/bash
 
+if [ $# -lt 2 ]; then
+    echo "not enough arguments"
+    exit 2
+fi
+
 end="$1"
 num=0
 shift
