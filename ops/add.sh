@@ -1,12 +1,10 @@
 #!/bin/bash
 
-if [ $# -lt 2 ]; then
-    echo "not enough arguments"
-    exit 2
-fi
+checking_the_number_of_arguments "$#" 2 
 
-end=0
+end="$1"
 num=0
+shift
 
 for num in "$@"; do
     end=$(awk -v e="$end" -v n="$num" 'BEGIN {print e + n}')
