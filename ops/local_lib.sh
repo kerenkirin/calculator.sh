@@ -6,3 +6,13 @@ checking_the_number_of_arguments () {
         exit 2
     fi
 }
+
+
+
+
+checking_the_of_validity_1 () {
+	if eval "! [[ \$1 $2 \$3 ]]"; then
+		echo "the provided numbers are not supported"
+		exit 2
+	fi
+}
